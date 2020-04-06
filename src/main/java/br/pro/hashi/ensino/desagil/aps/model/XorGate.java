@@ -7,7 +7,11 @@ public class XorGate extends Gate{
     private final NandGate nand4;
 
     public XorGate() {
+<<<<<<< HEAD
         super("XOR", 2);
+=======
+        super(  "XOR", 2);
+>>>>>>> 00ed2f074fab07e64bf1ff0496c6d5bff8f2b7d1
 
         nand1 = new NandGate();
         nand2 = new NandGate();
@@ -39,4 +43,8 @@ public class XorGate extends Gate{
         nand4.connect(0,nand2);
         nand4.connect(1,nand3);
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 00ed2f074fab07e64bf1ff0496c6d5bff8f2b7d1
