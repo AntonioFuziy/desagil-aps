@@ -11,7 +11,7 @@ public class AndGate extends Gate{
         nand1 = new NandGate();
         nand2 = new NandGate();
     }
-    
+
     @Override
     public boolean read() {
         return (nand2.read());
