@@ -1,19 +1,11 @@
 package br.pro.hashi.ensino.desagil.aps.model;
 
-<<<<<<< HEAD
-public class OrGate extends Gate{
-=======
 public class OrGate extends Gate {
->>>>>>> 00ed2f074fab07e64bf1ff0496c6d5bff8f2b7d1
     private final NandGate nand1;
     private final NandGate nand2;
     private final NandGate nand3;
 
-<<<<<<< HEAD
-    public OrGate(){
-=======
     public OrGate() {
->>>>>>> 00ed2f074fab07e64bf1ff0496c6d5bff8f2b7d1
         super("OR", 2);
 
         nand1 = new NandGate();
@@ -21,17 +13,10 @@ public class OrGate extends Gate {
         nand3 = new NandGate();
     }
 
-<<<<<<< HEAD
-    @Override
-    public boolean read(){
-        return nand3.read();
-=======
 
     @Override
     public boolean read() {
-
         return (nand3.read());
->>>>>>> 00ed2f074fab07e64bf1ff0496c6d5bff8f2b7d1
     }
 
     @Override
@@ -50,8 +35,4 @@ public class OrGate extends Gate {
         nand3.connect(0,nand1);
         nand3.connect(1,nand2);
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 00ed2f074fab07e64bf1ff0496c6d5bff8f2b7d1
