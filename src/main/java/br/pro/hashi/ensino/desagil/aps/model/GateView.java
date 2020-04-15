@@ -27,33 +27,55 @@ public class GateView extends JPanel implements ActionListener{
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
         add(inputCheck);
-        add(inputCheck2);
+        if (gates.getInputSize()>1) {
+            add(inputCheck2);
+        }
         add(outputCheck);
 
         gates.connect(0, switch1);
-        gates.connect(0, switch2);
+        if (gates.getInputSize()>1) {
+            gates.connect(1, switch2);
+        }
 
-
+        inputCheck.addActionListener(this);
+        if (gates.getInputSize()>1) {
+            inputCheck2.addActionListener(this);
+        }
         outputCheck.setEnabled(false);
 
         update();
     }
 
-    private void update(){
-        if (inputCheck.isSelected() && inputCheck2.isSelected()){
-            switch1.turnOn();
-            switch2.turnOn();
-        } else if (inputCheck.isSelected()){
-            switch1.turnOn();
-            switch2.turnOff();
-        } else if (inputCheck2.isSelected()){
-            switch1.turnOff();
-            switch2.turnOn();
-        } else {
-            switch1.turnOff();
-            switch2.turnOff();
-        }
+    private void update() {
+        System.out.println("Okay Boomer!!!");
+
+        /*if (gates.getInputSize()<2) {
+
+            inputCheck2.setOpaque(false);
+            if (inputCheck.isSelected()) {
+                switch1.turnOn();
+            } else {
+                switch1.turnOff();
+            }
+        }else {*/
+
+            if (inputCheck.isSelected() && inputCheck2.isSelected()) {
+                switch1.turnOn();
+                switch2.turnOn();
+            } else if (inputCheck.isSelected()) {
+                switch1.turnOn();
+                switch2.turnOff();
+            } else if (inputCheck2.isSelected()) {
+                switch1.turnOff();
+                switch2.turnOn();
+            } else {
+                switch1.turnOff();
+                switch2.turnOff();
+            }
+        //}
         outputCheck.setSelected(this.gates.read());
+
+        System.out.println("Okay Boomer");
     }
 
     @Override

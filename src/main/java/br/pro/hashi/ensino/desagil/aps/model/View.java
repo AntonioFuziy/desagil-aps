@@ -15,6 +15,7 @@ public class View extends JPanel implements ActionListener{
         for (Gate gate : gates){
             menu.addItem(gate);
         }
+
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         add(menu);
         addGateView(0);
