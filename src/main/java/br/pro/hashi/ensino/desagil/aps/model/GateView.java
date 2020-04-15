@@ -48,7 +48,7 @@ public class GateView extends JPanel implements ActionListener{
 
     private void update() {
         System.out.println("Okay Boomer!!!");
-        
+
             if (inputCheck.isSelected() && inputCheck2.isSelected()) {
                 switch1.turnOn();
                 switch2.turnOn();
@@ -62,7 +62,6 @@ public class GateView extends JPanel implements ActionListener{
                 switch1.turnOff();
                 switch2.turnOff();
             }
-        //}
         outputCheck.setSelected(this.gates.read());
 
         System.out.println("Okay Boomer");
