@@ -48,17 +48,7 @@ public class GateView extends JPanel implements ActionListener{
 
     private void update() {
         System.out.println("Okay Boomer!!!");
-
-        /*if (gates.getInputSize()<2) {
-
-            inputCheck2.setOpaque(false);
-            if (inputCheck.isSelected()) {
-                switch1.turnOn();
-            } else {
-                switch1.turnOff();
-            }
-        }else {*/
-
+        
             if (inputCheck.isSelected() && inputCheck2.isSelected()) {
                 switch1.turnOn();
                 switch2.turnOn();
