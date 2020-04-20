@@ -62,9 +62,14 @@ public class GateView extends JPanel implements ActionListener{
                 switch1.turnOff();
                 switch2.turnOff();
             }
-        outputCheck.setSelected(this.gates.read());
+        if (this.gates.read()) {
+            //Círculo colorido
+            System.out.println("Okay Boomer");
+        }
+        else {
+            //Círculo preto
 
-        System.out.println("Okay Boomer");
+        }
     }
 
     @Override
