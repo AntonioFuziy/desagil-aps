@@ -36,9 +36,11 @@ public class GateView extends FixedPanel implements ActionListener, MouseListene
 
         //setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setSize(20,20);
-        add(inputCheck,5,height/2 -30,20,20);
         if (gates.getInputSize()>1) {
+            add(inputCheck,5,height/2 -30,20,20);
             add(inputCheck2,5,height/3 +48,20,20);
+        }else{
+            add(inputCheck,5,height/2 -8,20,20);
         }
 
         add(outputCheck,275,height/2 -10,20,20);
