@@ -117,7 +117,7 @@ public class GateView extends FixedPanel implements ActionListener, MouseListene
         // Descobre em qual posição o clique ocorreu.
         int x = event.getX();
         int y = event.getY();
-        if (x >=255 && x <= 295 && y >= height/2-10-20 && y <= height/2-10+20 && Math.sqrt(Math.abs((x-275))*Math.abs((x-275)) + Math.abs((y-height/2-10))*Math.abs((y-height/2-10)))<20 ) {
+        if (x >=255 && x <= 295 && y >= height/2-10-20 && y <= height/2-10+20 && Math.abs((x-275))*Math.abs((x-275)) + Math.abs((y-height/2-10))*Math.abs((y-height/2-10))<200 ) {
 
             // ...então abrimos a janela seletora de cor...
             light.setColor(JColorChooser.showDialog(this, null, color));
