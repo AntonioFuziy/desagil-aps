@@ -12,8 +12,8 @@ public class GateView extends FixedPanel implements ActionListener, MouseListene
     private Light light;
     private Color color;
     private final Image image;
-    private final static int height = 300;
-    private final static int width = 600;
+    private final static int height = 200;
+    private final static int width = 300;
 
 
     private final JCheckBox inputCheck;
@@ -34,14 +34,14 @@ public class GateView extends FixedPanel implements ActionListener, MouseListene
         switch2 = new Switch();
 
 
-        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        //setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setSize(20,20);
-        add(inputCheck,15,height/2,20,20);
+        add(inputCheck,5,height/2 -30,20,20);
         if (gates.getInputSize()>1) {
-            add(inputCheck2,15,height/2 +20,20,20);
+            add(inputCheck2,5,height/3 +48,20,20);
         }
 
-        add(outputCheck,15,height/2 +40,20,20);
+        add(outputCheck,275,height/2 -10,20,20);
 
         gates.connect(0, switch1);
         if (gates.getInputSize()>1) {
@@ -135,8 +135,8 @@ public class GateView extends FixedPanel implements ActionListener, MouseListene
     @Override
     public void paintComponent(Graphics g) {
 
-        int img_height=200;
-        int img_width=500;
+        int img_height=100;
+        int img_width=250;
         // Não podemos esquecer desta linha, pois não somos os
         // únicos responsáveis por desenhar o painel, como era
         // o caso nos Desafios. Agora é preciso desenhar também
@@ -144,7 +144,7 @@ public class GateView extends FixedPanel implements ActionListener, MouseListene
         super.paintComponent(g);
 
         // Desenha a imagem, passando sua posição e seu tamanho.
-        g.drawImage(image, (width/2)-img_width/2, (height/2)-img_height/2, img_width,img_height, this);
+        g.drawImage(image, (this.width/2)-img_width/2, (height/2)-img_height/2, img_width,img_height, this);
 
         // Desenha um quadrado cheio.
         g.setColor(color);
