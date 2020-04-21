@@ -9,6 +9,7 @@ import java.awt.event.MouseListener;
 import java.net.URL;
 
 public class GateView extends FixedPanel implements ActionListener, MouseListener{
+    private final Gate gates;
     private Light light;
     private Color color;
     private final Image image;
@@ -25,6 +26,7 @@ public class GateView extends FixedPanel implements ActionListener, MouseListene
     public GateView(Gate gates){
         super(width, height);
 
+        this.gates = gates;
         this.light = new Light(255,0,0);
 
         inputCheck = new JCheckBox("Entrada 1");
@@ -36,23 +38,23 @@ public class GateView extends FixedPanel implements ActionListener, MouseListene
 
         //setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setSize(20,20);
-        if (gates.getInputSize()>1) {
-            add(inputCheck,5,height/2 -30,20,20);
-            add(inputCheck2,5,height/3 +48,20,20);
+        if (gates.getInputSize() > 1) {
+            add(inputCheck,5,height/2 - 30,20,20);
+            add(inputCheck2,5,height/3 + 48,20,20);
         }else{
-            add(inputCheck,5,height/2 -8,20,20);
+            add(inputCheck,5,height/2 - 8,20,20);
         }
 
-        add(outputCheck,275,height/2 -10,20,20);
+        add(outputCheck,275,height/2 - 10,20,20);
 
         gates.connect(0, switch1);
-        if (gates.getInputSize()>1) {
+        if (gates.getInputSize() > 1) {
             gates.connect(1, switch2);
         }
         color = light.getColor();
 
         inputCheck.addActionListener(this);
-        if (gates.getInputSize()>1) {
+        if (gates.getInputSize() > 1) {
             inputCheck2.addActionListener(this);
         }
         outputCheck.setEnabled(false);
@@ -85,6 +87,7 @@ public class GateView extends FixedPanel implements ActionListener, MouseListene
                 switch1.turnOff();
                 switch2.turnOff();
             }
+            outputCheck.setSelected(this.gates.read());
             color=light.getColor();
             repaint();
         /*if (this.gates.read()) {
@@ -109,16 +112,15 @@ public class GateView extends FixedPanel implements ActionListener, MouseListene
         // Descobre em qual posição o clique ocorreu.
         int x = event.getX();
         int y = event.getY();
-
-        // Se o clique foi dentro do quadrado colorido...
         if (x >= 210 && x < 235 && y >= 311 && y < 336) {
 
             // ...então abrimos a janela seletora de cor...
             color = JColorChooser.showDialog(this, null, color);
 
             // ...e chamamos repaint para atualizar a tela.
-            update();
         }
+        update();
+
     }
 
     @Override
@@ -146,9 +148,9 @@ public class GateView extends FixedPanel implements ActionListener, MouseListene
         super.paintComponent(g);
 
         // Desenha a imagem, passando sua posição e seu tamanho.
-        g.drawImage(image, (this.width/2)-img_width/2, (height/2)-img_height/2, img_width,img_height, this);
+        g.drawImage(image, (width/2)-img_width/2, (height/2)-img_height/2, img_width,img_height, this);
 
-        // Desenha um quadrado cheio.
+        g.drawOval(275, height/2-10, 20, 20);
         g.setColor(color);
         //g.fillRect(210, 311, width/2, 200);
 
