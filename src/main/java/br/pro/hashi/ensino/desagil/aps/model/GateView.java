@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.net.URL;
+import java.lang.Math;
 
 public class GateView extends FixedPanel implements ActionListener, MouseListener{
     private final Gate gates;
@@ -45,13 +46,17 @@ public class GateView extends FixedPanel implements ActionListener, MouseListene
             add(inputCheck,5,height/2 - 8,20,20);
         }
 
-        add(outputCheck,275,height/2 - 10,20,20);
+        //add(outputCheck,275,height/2 - 10,20,20);
 
         gates.connect(0, switch1);
         if (gates.getInputSize() > 1) {
             gates.connect(1, switch2);
         }
+
+        this.light.connect(0, gates);
+
         color = light.getColor();
+
 
         inputCheck.addActionListener(this);
         if (gates.getInputSize() > 1) {
@@ -112,10 +117,11 @@ public class GateView extends FixedPanel implements ActionListener, MouseListene
         // Descobre em qual posição o clique ocorreu.
         int x = event.getX();
         int y = event.getY();
-        if (x >= 210 && x < 235 && y >= 311 && y < 336) {
+        if (x >=255 && x <= 295 && y >= height/2-10-20 && y <= height/2-10+20 && Math.sqrt(Math.abs((x-275))*Math.abs((x-275)) + Math.abs((y-height/2-10))*Math.abs((y-height/2-10)))<20 ) {
 
             // ...então abrimos a janela seletora de cor...
-            color = JColorChooser.showDialog(this, null, color);
+            light.setColor(JColorChooser.showDialog(this, null, color));
+
 
             // ...e chamamos repaint para atualizar a tela.
         }
@@ -150,8 +156,9 @@ public class GateView extends FixedPanel implements ActionListener, MouseListene
         // Desenha a imagem, passando sua posição e seu tamanho.
         g.drawImage(image, (width/2)-img_width/2, (height/2)-img_height/2, img_width,img_height, this);
 
-        g.drawOval(275, height/2-10, 20, 20);
         g.setColor(color);
+        g.fillOval(275, height/2-10, 20, 20);
+
         //g.fillRect(210, 311, width/2, 200);
 
         // Linha necessária para evitar atrasos
